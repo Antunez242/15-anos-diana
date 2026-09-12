@@ -11,6 +11,115 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+  /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b1d3a;
+      font-family: 'Cinzel', serif;
+      overflow-x: hidden;
+    }
+
+    /* --- SECCIÓN DE BIENVENIDA / PORTADA --- */
+    #hero-cover {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: radial-gradient(circle at center, #1b2e4b 0%, #081326 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    /* Oculta la portada al presionar el botón */
+    #hero-cover.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Marcador/Tarjeta Central */
+    .card-container {
+      border: 1.5px solid #d4af37;
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 480px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+      position: relative;
+      background: rgba(11, 29, 58, 0.4);
+    }
+
+    .card-title {
+      color: #d4af37;
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .name {
+      font-family: 'Great Vibes', cursive;
+      color: #ffffff;
+      font-size: 52px;
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .subtitle {
+      color: #d4af37;
+      font-size: 13px;
+      letter-spacing: 5px;
+      margin-bottom: 35px;
+    }
+
+    /* Botón Circular */
+    .btn-open {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1a2a40 0%, #0d1624 100%);
+      border: 2px solid #d4af37;
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      outline: none;
+    }
+
+    .btn-open:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+      background: radial-gradient(circle, #253956 0%, #121e30 100%);
+    }
+
+    /* Fecha debajo de la tarjeta */
+    .event-date {
+      color: #7a8b9e;
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-top: 35px;
+    }
     * {
       margin: 0;
       padding: 0;
@@ -133,7 +242,24 @@
   </style>
 </head>
 <body>
+<section id="hero-cover">
+    <div class="card-container">
+      <div class="card-title">INVITACIÓN ESPECIAL</div>
+      <h1 class="name">Diana Greykelly</h1>
+      <div class="subtitle">XV AÑOS</div>
+      
+      <button class="btn-open" onclick="openInvitation()">
+        ABRIR<br>INVITACIÓN
+      </button>
+    </div>
 
+    <div class="event-date">24 DE OCTUBRE DE 2026</div>
+  </section>
+
+  <!-- ==================== CONTENIDO PRINCIPAL DE TU WEB ==================== -->
+  <main id="main-content">
+    <!-- Aquí va todo el contenido restante de tu invitación (Ubicación, Fotos, Confirmación, etc.) -->
+  </main>
   <!-- Audio Oculto -->
   <!-- Reemplaza 'musica.mp3' por el enlace o nombre de tu archivo de audio -->
   <audio id="miMusica" loop>
@@ -174,6 +300,14 @@
   </div>
 
   <script>
+  function openInvitation() {
+      // Oculta la portada suavemente
+      document.getElementById('hero-cover').classList.add('hidden');
+      
+      // Opcional: Si quieres que empiece a reproducirse música al hacer clic:
+      // const audio = new Audio('tu-musica.mp3');
+      // audio.play();
+    }
     // --- LÓGICA DE LA MÚSICA ---
     const musica = document.getElementById('miMusica');
     const btnMusica = document.getElementById('btnMusica');
