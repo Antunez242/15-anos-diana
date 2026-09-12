@@ -1,419 +1,220 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis 15 Años - Diana Greykelly</title>
-    <!-- Fuentes elegantes de Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- ESTILOS GENERALES Y PALETA DE COLORES --- */
-        :root {
-            --color-principal: #3a7bd5; /* Azul elegante */
-            --color-secundario: #fdfbf7;
-            --color-gris: #8e9eab; /* Gris suave */
-            --color-texto: #333333;
-            --color-fondo-tarjeta: #ffffff;
-            --fuente-titulo: 'Alex Brush', cursive;
-            --fuente-texto: 'Montserrat', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XV Años - Diana Greykelly</title>
+  
+  <!-- Fuentes elegantes desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: var(--fuente-texto);
-            background-color: var(--color-secundario);
-            color: var(--color-texto);
-            text-align: center;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    body, html {
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
 
-        /* --- PANTALLA DE BIENVENIDA (OVERLAY) --- */
-        #welcome-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 1s ease, visibility 1s ease;
-            padding: 20px;
-        }
+    /* Fondo de la invitación */
+    .background {
+      /* Reemplaza 'fondo.jpg' por la URL o ruta de tu imagen de fondo */
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                  url('diana.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
 
-        #welcome-screen h1 {
-            font-family: var(--fuente-titulo);
-            font-size: 4rem;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-        }
+    /* Contenido principal */
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 4px;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
 
-        .btn-abrir {
-            background-color: #ffffff;
-            color: var(--color-principal);
-            padding: 15px 35px;
-            font-size: 1.2rem;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5rem;
+      font-weight: normal;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
 
-        .btn-abrir:hover {
-            transform: scale(1.05);
-            background-color: #f0f0f0;
-        }
+    .date {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 3px;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
 
-        /* --- GLOBOS FLOTANTES --- */
-        .balloon-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
+    /* Temporizador */
+    .countdown-container {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-        .balloon {
-            position: absolute;
-            bottom: -100px;
-            width: 30px;
-            height: 40px;
-            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            animation: floatUp 12s infinite ease-in-out;
-            opacity: 0.7;
-        }
+    .time-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 15px 20px;
+      min-width: 80px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
 
-        .balloon::after {
-            content: "";
-            position: absolute;
-            bottom: -8px;
-            left: 13px;
-            width: 2px;
-            height: 10px;
-            background: rgba(0,0,0,0.2);
-        }
+    .time-box .number {
+      font-size: 2rem;
+      font-weight: 600;
+      display: block;
+    }
 
-        .balloon.blue { background-color: #70a1ff; }
-        .balloon.grey { background-color: #a4b0be; }
+    .time-box .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
 
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
-            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
-        }
+    /* Botón flotante para la música */
+    .music-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 55px;
+      height: 55px;
+      background-color: rgba(30, 20, 50, 0.75);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 9999; /* Asegura que permanezca arriba al hacer scroll */
+      transition: all 0.3s ease;
+    }
 
-        /* --- CONTENIDO PRINCIPAL --- */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
+    .music-btn:hover {
+      transform: scale(1.1);
+      background-color: rgba(50, 30, 80, 0.9);
+      border-color: #fff;
+    }
 
-        .hero {
-            padding: 50px 20px 20px 20px;
-        }
+    /* Animación suave al estar sonando */
+    .playing {
+      animation: pulse 1.5s infinite alternate;
+    }
 
-        .hero h2 {
-            font-size: 1.5rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #666;
-        }
-
-        .hero h1 {
-            font-family: var(--fuente-titulo);
-            font-size: 4.5rem;
-            color: var(--color-principal);
-            margin: 5px 0;
-        }
-
-        /* FOTO CON MOVIENTO LEVE */
-        .photo-frame {
-            width: 230px;
-            height: 230px;
-            margin: 20px auto;
-            border-radius: 50%;
-            border: 5px solid #ffffff;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            overflow: hidden;
-            animation: gentleMotion 6s infinite ease-in-out;
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @keyframes gentleMotion {
-            0% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.04) translateY(-8px); }
-            100% { transform: scale(1) translateY(0); }
-        }
-
-        /* --- CUENTA REGRESIVA Y TARJETAS --- */
-        .countdown-container, .card {
-            background: var(--color-fondo-tarjeta);
-            margin: 30px 0;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #f0f0f0;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .time-box {
-            background: var(--color-secundario);
-            padding: 10px 15px;
-            border-radius: 8px;
-            min-width: 65px;
-            border: 1px solid rgba(58, 123, 213, 0.3);
-        }
-
-        .time-box span {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--color-principal);
-        }
-
-        .card h3 {
-            font-family: var(--fuente-titulo);
-            font-size: 3rem;
-            color: var(--color-principal);
-            margin-bottom: 10px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--color-principal);
-            color: #fff;
-            padding: 12px 25px;
-            margin-top: 15px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 500px;
-            margin: 20px auto 0 auto;
-            text-align: left;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        footer {
-            padding: 30px 20px;
-            font-size: 0.9rem;
-            color: #888;
-        }
-    </style>
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+      100% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- PANTALLA DE BIENVENIDA -->
-    <div id="welcome-screen">
-        <h1>Diana Greykelly</h1>
-        <p style="color: white; margin-bottom: 25px;">Te invito a celebrar mis 15 años</p>
-        <button class="btn-abrir" onclick="abrirInvitacion()">Abrir Invitación ✉️</button>
+  <!-- Audio Oculto -->
+  <!-- Reemplaza 'musica.mp3' por el enlace o nombre de tu archivo de audio -->
+  <audio id="miMusica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+  </audio>
+
+  <!-- Botón Flotante en la Esquina Inferior Derecha -->
+  <button class="music-btn" id="btnMusica" onclick="toggleMusica()" title="Reproducir/Pausar música">
+    🎵
+  </button>
+
+  <!-- Sección Principal de la Invitación -->
+  <div class="background">
+    <div class="subtitle">Mis XV Años</div>
+    <h1 class="title">Diana Greykelly</h1>
+    <div class="date">24.10.2026</div>
+
+    <!-- Temporizador -->
+    <div class="countdown-container">
+      <div class="time-box">
+        <span class="number" id="dias">00</span>
+        <span class="label">días</span>
+      </div>
+      <div class="time-box">
+        <span class="number" id="horas">00</span>
+        <span class="label">horas</span>
+      </div>
+      <div class="time-box">
+        <span class="number" id="minutos">00</span>
+        <span class="label">minutos</span>
+      </div>
+      <div class="time-box">
+        <span class="number" id="segundos">00</span>
+        <span class="label">segundos</span>
+      </div>
     </div>
-<audio id="miMusica" loop>
-  <!-- Reemplaza "tu-cancion.mp3" por la ruta o enlace de tu archivo de audio -->
-  <source src="musica.mp3" type="audio/mpeg">
-  Tu navegador no soporta el elemento de audio.
-</audio>
+  </div>
 
-<!-- Botón de control -->
-<button id="botonMusica" onclick="toggleMusica()">
-  <span id="iconoMusica">🎵</span> <span id="textoBoton">Reproducir Música</span>
-</button>
+  <script>
+    // --- LÓGICA DE LA MÚSICA ---
+    const musica = document.getElementById('miMusica');
+    const btnMusica = document.getElementById('btnMusica');
 
-    <!-- GLOBOS FLOTANTES (AZULES Y GRISES) -->
-    <div class="balloon-container">
-        <div class="balloon blue" style="left: 10%; animation-delay: 0s;"></div>
-        <div class="balloon grey" style="left: 25%; animation-delay: 2s;"></div>
-        <div class="balloon blue" style="left: 45%; animation-delay: 4s;"></div>
-        <div class="balloon grey" style="left: 65%; animation-delay: 1s;"></div>
-        <div class="balloon blue" style="left: 80%; animation-delay: 5s;"></div>
-        <div class="balloon grey" style="left: 92%; animation-delay: 3s;"></div>
-    </div>
+    function toggleMusica() {
+      if (musica.paused) {
+        musica.play();
+        btnMusica.textContent = '🔊';
+        btnMusica.classList.add('playing');
+      } else {
+        musica.pause();
+        btnMusica.textContent = '🎵';
+        btnMusica.classList.remove('playing');
+      }
+    }
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <div class="container">
+    // --- LÓGICA DEL TEMPORIZADOR ---
+    // Cambia la fecha por la de tu evento (Año, Mes-1, Día, Hora, Minutos)
+    const fechaEvento = new Date(2026, 9, 24, 18, 0, 0).getTime(); // 24 de Octubre de 2026
 
-        <header class="hero">
-            <h2>Mis 15 Años</h2>
-            <h1>Diana Greykelly</h1>
-            
-            <!-- FOTO DE LA QUINCEAÑERA CON MOVIMIENTO -->
-            <div class="photo-frame">
-                <!-- Reemplaza "diana.jpg" por el nombre de la foto de Diana -->
-                <img src="diana.jpg" alt="Diana Greykelly">
-            </div>
+    const intervalo = setInterval(function() {
+      const ahora = new Date().getTime();
+      const distancia = fechaEvento - ahora;
 
-            <p style="font-style: italic;">"Gran suceso en la familia Antunez-Monagas, el florecer de una nueva dama con la bendicion del universo y de mis padres, te invito a celebrar este dia tan especial en mi vida. Con mucho cariño y alegria quiero compartir contigo este momento unico que marca el inicio de una nueva etapa en mi vida."</p>
-        </header>
+      if (distancia < 0) {
+        clearInterval(intervalo);
+        document.querySelector('.countdown-container').innerHTML = "<h3>¡Llegó el gran día!</h3>";
+        return;
+      }
 
-        <!-- CUENTA REGRESIVA -->
-        <section class="countdown-container">
-            <h4 style="text-transform: uppercase; letter-spacing: 2px;">Faltan solo</h4>
-            <div class="countdown" id="countdown">
-                <div class="time-box"><span id="days">00</span>Días</div>
-                <div class="time-box"><span id="hours">00</span>Horas</div>
-                <div class="time-box"><span id="minutes">00</span>Min</div>
-                <div class="time-box"><span id="seconds">00</span>Seg</div>
-            </div>
-        </section>
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-        <!-- DETALLES DEL EVENTO -->
-        <section class="card">
-            <h3>Ceremonia & Fiesta</h3>
-            <p><strong>Fecha:</strong> Sábado, 15 de Noviembre de 2026</p>
-            <br>
-            <p><strong>Misa de Acción de Gracias</strong></p>
-            <p>Hora: 5:00 PM</p>
-            <p>Lugar: Parroquia San José</p>
-            <a href="https://maps.google.com" target="_blank" class="btn">Ver en Google Maps</a>
-            <br><br><hr style="border: 0; border-top: 1px solid #eee;"><br>
-            <p><strong>Recepción / Fiesta</strong></p>
-            <p>Hora: 7:00 PM</p>
-            <p>Lugar: Salón de Eventos "El Gran Palacio"</p>
-            <a href="https://maps.google.com" target="_blank" class="btn">Ver en Google Maps</a>
-        </section>
+      document.getElementById('dias').textContent = dias < 10 ? '0' + dias : dias;
+      document.getElementById('horas').textContent = horas < 10 ? '0' + horas : horas;
+      document.getElementById('minutos').textContent = minutos < 10 ? '0' + minutos : minutos;
+      document.getElementById('segundos').textContent = segundos < 10 ? '0' + segundos : segundos;
+    }, 1000);
+  </script>
 
-        <!-- CÓDIGO DE VESTIMENTA -->
-        <section class="card">
-            <h3>Código de Vestimenta</h3>
-            <p><strong>Traje semi-Formal / Elegante</strong></p>
-            <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">Se reservan con cariño los colores azul y gris son exclusivos de la quinceañera.</p>
-        </section>
-
-        <!-- LLUVIAS DE SOBRES / REGALOS -->
-        <section class="card">
-            <h3>Regalos</h3>
-            <p>"El regalo es opcional, tu precencia es obligatoria. Pero si gustas hacerme un presente, se agradecera que sea en efectivo. <strong> a traves de Lluvia de Sobres</strong></p>
-        </section>
-
-        <!-- FORMULARIO RSVP (CONFIRMACIÓN) -->
-        <section class="card">
-            <h3>Confirmar Asistencia</h3>
-            <p>Por favor confirma tu asistencia antes del 10 de Octubre.</p>
-            
-            <form id="rsvpForm">
-                <div>
-                    <label>Nombre completo:</label>
-                    <input type="text" id="nombre" required placeholder="Tu nombre y apellido">
-                </div>
-                <div>
-                    <label>¿Asistirás?:</label>
-                    <select id="asistencia" required>
-                        <option value="Si">¡Sí, ahí estaré!</option>
-                        <option value="No">Lo siento, no podré asistir</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Número de pases a confirmar:</label>
-                    <input type="number" id="pases" min="1" max="5" value="1" required>
-                </div>
-                <button type="submit" class="btn">Enviar Confirmación por WhatsApp</button>
-            </form>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>¡Te esperamos para celebrar los 15 años de Diana Greykelly!</p>
-    </footer>
-
-    <!-- JAVASCRIPT -->
-    <script>
-        // ABRIR INVITACIÓN Y REPRODUCIR MÚSICA
-        function abrirInvitacion() {
-            document.getElementById('welcome-screen').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('welcome-screen').style.display = 'none';
-            }, 1000);
-
-            const music = document.getElementById('bg-music');
-            music.play().catch(e => console.log("Auto-play no permitido:", e));
-        }
-
-        // CUENTA REGRESIVA
-        const eventDate = new Date(2026, 10, 15, 17, 0, 0).getTime();
-
-        const updateCountdown = () => {
-            const now = new Date().getTime();
-            const difference = eventDate - now;
-
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
-            } else {
-                document.getElementById('countdown').innerHTML = "<p>¡Hoy es el gran día!</p>";
-            }
-        };
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // FORMULARIO A WHATSAPP
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const asistencia = document.getElementById('asistencia').value;
-            const pases = document.getElementById('pases').value;
-            
-            const miTelefono = "584142545124"; // Reemplaza con tu número de teléfono (ej: 584121234567)
-
-            const mensaje = `*Confirmación 15 Años Diana Greykelly*%0A` +
-                            `*Nombre:* ${nombre}%0A` +
-                            `*Asistirá:* ${asistencia}%0A` +
-                            `*Pases:* ${pases}`;
-
-            window.open(`https://wa.me/${miTelefono}?text=${mensaje}`, '_blank');
-        });
-    </script>
 </body>
 </html>
