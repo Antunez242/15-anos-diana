@@ -732,13 +732,12 @@
   </div>
 
   <script>
-  
   function openInvitation() {
-      // Oculta la portada suavemente
       document.getElementById('hero-cover').classList.add('hidden');
-            
-    // --- LÓGICA DE LA MÚSICA ---
     const musica = document.getElementById('miMusica');
+    musica.play
+  }  // --- LÓGICA DE LA MÚSICA ---
+    
     const btnMusica = document.getElementById('btnMusica');
 
     function toggleMusica() {
@@ -751,8 +750,8 @@
         btnMusica.textContent = '🎵';
         btnMusica.classList.remove('playing');
       }
-    }
-
+      
+  }
     // --- LÓGICA DEL TEMPORIZADOR ---
     // Cambia la fecha por la de tu evento (Año, Mes-1, Día, Hora, Minutos)
     const fechaEvento = new Date(2026, 9, 24, 18, 0, 0).getTime(); // 24 de Octubre de 2026
