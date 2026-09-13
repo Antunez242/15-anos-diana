@@ -517,6 +517,32 @@
   </style>
 </head>
 <body>
+      <!-- Sección Principal de la Invitación -->
+  <div class="background">
+    <div class="subtitle">Mis XV Años</div>
+    <h1 class="title">Diana Greykelly</h1>
+    <div class="date">24.10.2026</div>
+
+    <!-- Temporizador -->
+    <div class="countdown-container">
+      <div class="time-box">
+        <span class="number" id="dias">00</span>
+        <span class="label">días</span>
+      </div>
+      <div class="time-box">
+        <span class="number" id="horas">00</span>
+        <span class="label">horas</span>
+      </div>
+      <div class="time-box">
+        <span class="number" id="minutos">00</span>
+        <span class="label">minutos</span>
+      </div>
+      <div class="time-box">
+        <span class="number" id="segundos">00</span>
+        <span class="label">segundos</span>
+      </div>
+    </div>
+  </div>
    
   <!-- ==========================================
      1. SECCIÓN: DEDICATORIA
@@ -704,44 +730,22 @@
     🎵
   </button>
 
-  <!-- Sección Principal de la Invitación -->
-  <div class="background">
-    <div class="subtitle">Mis XV Años</div>
-    <h1 class="title">Diana Greykelly</h1>
-    <div class="date">24.10.2026</div>
-
-    <!-- Temporizador -->
-    <div class="countdown-container">
-      <div class="time-box">
-        <span class="number" id="dias">00</span>
-        <span class="label">días</span>
-      </div>
-      <div class="time-box">
-        <span class="number" id="horas">00</span>
-        <span class="label">horas</span>
-      </div>
-      <div class="time-box">
-        <span class="number" id="minutos">00</span>
-        <span class="label">minutos</span>
-      </div>
-      <div class="time-box">
-        <span class="number" id="segundos">00</span>
-        <span class="label">segundos</span>
-      </div>
-    </div>
-  </div>
-
   <script>
+  
   function openInvitation() {
+      // Oculta la portada suavemente
       document.getElementById('hero-cover').classList.add('hidden');
-      const musica = new audio('miMusica');
-      musica.play
-  }  // --- LÓGICA DE LA MÚSICA ---
-    const musica = document.getElementById('miMusica');
+      
+      // Opcional: Si quieres que empiece a reproducirse música al hacer clic:
+    const audio = new Audio('musica.mp3');
+      audio.play();
+    }
+    // --- LÓGICA DE LA MÚSICA ---
+    const musica = audio;
     const btnMusica = document.getElementById('btnMusica');
 
     function toggleMusica() {
-      if (musica.pause) {
+      if (musica.paused) {
         musica.play();
         btnMusica.textContent = '🔊';
         btnMusica.classList.add('playing');
@@ -750,8 +754,8 @@
         btnMusica.textContent = '🎵';
         btnMusica.classList.remove('playing');
       }
-      
-  }
+    }
+
     // --- LÓGICA DEL TEMPORIZADOR ---
     // Cambia la fecha por la de tu evento (Año, Mes-1, Día, Hora, Minutos)
     const fechaEvento = new Date(2026, 9, 24, 18, 0, 0).getTime(); // 24 de Octubre de 2026
