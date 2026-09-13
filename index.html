@@ -15,221 +15,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-      /* --- SECCIÓN DE BIENVENIDA / PORTADA --- */
-    #hero-cover {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: radial-gradient(circle at center, #1b2e4b 0%, #081326 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
-
-    /* Oculta la portada al presionar el botón */
-    #hero-cover.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    /* Marcador/Tarjeta Central */
-    .card-container {
-      border: 1.5px solid #d4af37;
-      padding: 40px 30px;
-      width: 90%;
-      max-width: 480px;
-      text-align: center;
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
-      position: relative;
-      background: rgba(11, 29, 58, 0.4);
-    }
-
-    .card-title {
-      color: #d4af37;
-      font-size: 14px;
-      letter-spacing: 4px;
-      margin-bottom: 25px;
-      font-weight: 600;
-    }
-
-    .name {
-      font-family: 'Great Vibes', cursive;
-      color: #ffffff;
-      font-size: 52px;
-      font-weight: normal;
-      line-height: 1.2;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    }
-
-    .subtitle {
-      color: #d4af37;
-      font-size: 13px;
-      letter-spacing: 5px;
-      margin-bottom: 35px;
-    }
-
-    /* Botón Circular */
-    .btn-open {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #1a2a40 0%, #0d1624 100%);
-      border: 2px solid #d4af37;
-      color: #d4af37;
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 10px;
-      outline: none;
-    }
-
-    .btn-open:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
-      background: radial-gradient(circle, #253956 0%, #121e30 100%);
-    }
-
-    /* Fecha debajo de la tarjeta */
-    .event-date {
-      color: #7a8b9e;
-      font-size: 12px;
-      letter-spacing: 4px;
-      margin-top: 35px;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      height: 100%;
-      font-family: 'Montserrat', sans-serif;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
-
-    /* Fondo de la invitación */
-    .background {
-      /* Reemplaza 'fondo.jpg' por la URL o ruta de tu imagen de fondo */
-      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                  url('diana.jpg') no-repeat center center/cover;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* Contenido principal */
-    .subtitle {
-      font-family: 'Cinzel', serif;
-      letter-spacing: 4px;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-
-    .title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4.5rem;
-      font-weight: normal;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-    }
-
-    .date {
-      font-family: 'Cinzel', serif;
-      letter-spacing: 3px;
-      font-size: 1.1rem;
-      margin-bottom: 40px;
-    }
-
-    /* Temporizador */
-    .countdown-container {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .time-box {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      padding: 15px 20px;
-      min-width: 80px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    .time-box .number {
-      font-size: 2rem;
-      font-weight: 600;
-      display: block;
-    }
-
-    .time-box .label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.8;
-    }
-
-    /* Botón flotante para la música */
-    .music-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 55px;
-      height: 55px;
-      background-color: rgba(30, 20, 50, 0.75);
-      border: 2px solid rgba(255, 255, 255, 0.6);
-      border-radius: 50%;
-      color: #fff;
-      font-size: 22px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      z-index: 9999; /* Asegura que permanezca arriba al hacer scroll */
-      transition: all 0.3s ease;
-    }
-
-    .music-btn:hover {
-      transform: scale(1.1);
-      background-color: rgba(50, 30, 80, 0.9);
-      border-color: #fff;
-    }
-
-    /* Animación suave al estar sonando */
-    .playing {
-      animation: pulse 1.5s infinite alternate;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-      100% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
-    }
     :root {
       --bg-dark: #120505;
       --card-bg: #1e0909;
@@ -513,6 +298,222 @@
       font-family: 'Cinzel', serif;
       overflow-x: hidden;
     }
+
+    /* --- SECCIÓN DE BIENVENIDA / PORTADA --- */
+    #hero-cover {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: radial-gradient(circle at center, #1b2e4b 0%, #081326 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    /* Oculta la portada al presionar el botón */
+    #hero-cover.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Marcador/Tarjeta Central */
+    .card-container {
+      border: 1.5px solid #d4af37;
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 480px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+      position: relative;
+      background: rgba(11, 29, 58, 0.4);
+    }
+
+    .card-title {
+      color: #d4af37;
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .name {
+      font-family: 'Great Vibes', cursive;
+      color: #ffffff;
+      font-size: 52px;
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .subtitle {
+      color: #d4af37;
+      font-size: 13px;
+      letter-spacing: 5px;
+      margin-bottom: 35px;
+    }
+
+    /* Botón Circular */
+    .btn-open {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1a2a40 0%, #0d1624 100%);
+      border: 2px solid #d4af37;
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      outline: none;
+    }
+
+    .btn-open:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+      background: radial-gradient(circle, #253956 0%, #121e30 100%);
+    }
+
+    /* Fecha debajo de la tarjeta */
+    .event-date {
+      color: #7a8b9e;
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-top: 35px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Fondo de la invitación */
+    .background {
+      /* Reemplaza 'fondo.jpg' por la URL o ruta de tu imagen de fondo */
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                  url('diana.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Contenido principal */
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 4px;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5rem;
+      font-weight: normal;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .date {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 3px;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    /* Temporizador */
+    .countdown-container {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 15px 20px;
+      min-width: 80px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .time-box .number {
+      font-size: 2rem;
+      font-weight: 600;
+      display: block;
+    }
+
+    .time-box .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+
+    /* Botón flotante para la música */
+    .music-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 55px;
+      height: 55px;
+      background-color: rgba(30, 20, 50, 0.75);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 9999; /* Asegura que permanezca arriba al hacer scroll */
+      transition: all 0.3s ease;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.1);
+      background-color: rgba(50, 30, 80, 0.9);
+      border-color: #fff;
+    }
+
+    /* Animación suave al estar sonando */
+    .playing {
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+      100% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
+    }
   </style>
 </head>
 <body>
@@ -737,8 +738,8 @@
       document.getElementById('hero-cover').classList.add('hidden');
       
       // Opcional: Si quieres que empiece a reproducirse música al hacer clic:
-    const audio = new Audio('tu-musica.mp3');
-      audio.play();
+    const audio = new Audio('musica.mp3');
+    audio.play();
     }
     // --- LÓGICA DE LA MÚSICA ---
     const musica = document.getElementById('miMusica');
