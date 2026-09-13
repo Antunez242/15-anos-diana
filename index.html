@@ -735,18 +735,18 @@
   function openInvitation() {
       document.getElementById('hero-cover').classList.add('hidden');
     const musica = document.getElementById('miMusica');
-    musica.play
+      musica.play
   }  // --- LÓGICA DE LA MÚSICA ---
-    
+    const musica = document.getElementById('miMusica');
     const btnMusica = document.getElementById('btnMusica');
 
     function toggleMusica() {
-      if (musica.play) {
-        musica.pause();
+      if (musica.pause) {
+        musica.play();
         btnMusica.textContent = '🔊';
         btnMusica.classList.add('playing');
       } else {
-        musica.play();
+        musica.pause();
         btnMusica.textContent = '🎵';
         btnMusica.classList.remove('playing');
       }
